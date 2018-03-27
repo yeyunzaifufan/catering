@@ -17,7 +17,7 @@
          #{password}
          )
     </insert>
-    <select id="findUserByUserNameAndRole" resultType="com.zy.model.User">
+    <select id="findUserByUserName" resultType="com.zy.model.User">
         SELECT
           user_name AS userName,
           password,
@@ -26,7 +26,5 @@
           user
         WHERE
           user_name = #{userName}
-        and
-          role = #{role}
     </select>
 </mapper>

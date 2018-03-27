@@ -8,5 +8,5 @@ public interface UserDao extends BaseDao {
 
     Integer insertUser(User user);
 
-    User findUserByUserNameAndRole(@Param("userName") String userName, @Param("role") int role);
+    User findUserByUserName(@Param("userName") String userName);
 }

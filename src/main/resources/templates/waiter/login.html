@@ -38,8 +38,8 @@
                 },
                 dataType:"json",
                 success:function (result) {
-                    if(result.code === 1){
-                        toMain(result.bean);
+                    if(result.code == 1){
+                        toMain();
                     } else{
                         alert(result.message);
                     }
@@ -50,16 +50,8 @@
             });
         }
 
-        function toMain(user) {
-            if(user.role===1){
-                window.location.href="/manager/main";
-            }  else if(user.role===3){
-                window.location.href="/waiter/main";
-            } else if(user.role===4){
-                window.location.href="/chef/main";
-            } else {
-                window.location.href="/customer/main";
-            }
+        function toMain() {
+            window.location.href="/main";
         }
     </script>
 

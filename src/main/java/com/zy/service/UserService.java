@@ -18,17 +18,18 @@ public class UserService {
     private UserDao userDao;
 
     public Result login(User userLogin){
-        Result result = new Result();
-        User user = userDao.findUserByUserNameAndRole(userLogin.getUserName(), userLogin.getRole());
+        Result<User> result = new Result<>();
+        User user = userDao.findUserByUserName(userLogin.getUserName());
         if(null == user || !userLogin.getPassword().equals(user.getPassword())){
             result.setMessage(ResultMsgConstants.LOGIN_WRONG_MSG);
         } else {
             result.setCode(ResultCodeEnum.SUCCESS.getStatus());
+            result.setBean(user);
         }
         return result;
     }
 
-    public Result addUser(User user){
+    public void addUser(User user){
         Result result = new Result();
         Integer i = userDao.insertUser(user);
         if(i == ResultCodeEnum.SUCCESS.getStatus()){
@@ -36,6 +37,5 @@ public class UserService {
         } else {
             result.setMessage(ResultMsgConstants.LOGIN_WRONG_MSG);
         }
-        return result;
     }
 }
