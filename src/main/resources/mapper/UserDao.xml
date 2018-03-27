@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.dao.UserDao">
+    <insert id="insertUser" parameterType="com.zy.model.User"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO
+         user
+         (
+         user_name,
+         user_password,
+         role
+         )
+         VALUES
+         (
+         #{userName},
+         #{password}
+         )
+    </insert>
+    <select id="findUserByUserNameAndRole" resultType="com.zy.model.User">
+        SELECT
+          user_name AS userName,
+          password,
+          role
+        FROM
+          user
+        WHERE
+          user_name = #{userName}
+        and
+          role = #{role}
+    </select>
+</mapper>
