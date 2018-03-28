@@ -4,9 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- * Created by Liu-Yang on 2018/3/27.
- */
 @Configuration
 public class WebMvcConfig  extends WebMvcConfigurerAdapter {
 
@@ -28,6 +25,21 @@ public class WebMvcConfig  extends WebMvcConfigurerAdapter {
         registry.addViewController("/manager/right").setViewName("/manager/right");
         registry.addViewController("/manager/tab").setViewName("/manager/tab");
         registry.addViewController("/manager/tools").setViewName("/manager/tools");
+
+        registry.addViewController("/customer/top").setViewName("/customer/top");
+        registry.addViewController("/customer/left").setViewName("/customer/left");
+        registry.addViewController("/customer/index").setViewName("/customer/index");
+        registry.addViewController("/customer/main").setViewName("/customer/main");
+        registry.addViewController("/customer/computer").setViewName("/customer/computer");
+        registry.addViewController("/customer/default").setViewName("/customer/default");
+        registry.addViewController("/customer/error").setViewName("/customer/error");
+        registry.addViewController("/customer/filelist").setViewName("/customer/filelist");
+        registry.addViewController("/customer/imglist").setViewName("/customer/imglist");
+        registry.addViewController("/customer/imglist1").setViewName("/customer/imglist1");
+        registry.addViewController("/customer/imgtable").setViewName("/customer/imgtable");
+        registry.addViewController("/customer/right").setViewName("/customer/right");
+        registry.addViewController("/customer/tab").setViewName("/customer/tab");
+        registry.addViewController("/customer/tools").setViewName("/customer/tools");
     }
 
 }

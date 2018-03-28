@@ -2,6 +2,8 @@ package com.zy.service;
 
 import com.zy.base.Result;
 import com.zy.common.ResultMsgConstants;
+import com.zy.controller.LoginController;
+import com.zy.controller.LoginUserController;
 import com.zy.dao.UserDao;
 import com.zy.enums.ResultCodeEnum;
 import com.zy.model.User;
@@ -23,6 +25,7 @@ public class UserService {
         if(null == user || !userLogin.getPassword().equals(user.getPassword())){
             result.setMessage(ResultMsgConstants.LOGIN_WRONG_MSG);
         } else {
+            LoginUserController.setUserName(userLogin.getUserName());
             result.setCode(ResultCodeEnum.SUCCESS.getStatus());
             result.setBean(user);
         }
