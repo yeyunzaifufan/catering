@@ -9,7 +9,6 @@
     <script src="js/cloud.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
     <script language="javascript">
         $(function () {
             $('.loginbox').css({'position': 'absolute', 'left': ($(window).width() - 692) / 2});
@@ -18,61 +17,58 @@
             })
         });
     </script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#login_link").click(function () {
-                login();     
+                login();
+            });
+            $("#register_link").click(function () {
+                register();
             });
         });
-        
         function login() {
             $.ajax({
                 type: "POST",
                 url: "/loginAction",
-                async:false,
-                data:{
-                   userName: $("#userName").val(),
-                   password: $("#password").val(),
-                   role: $("input[name='radio8']:checked").val()
+                async: false,
+                data: {
+                    userName: $("#userName").val(),
+                    password: $("#password").val()
                 },
-                dataType:"json",
-                success:function (result) {
-                    if(result.code === 1){
+                dataType: "json",
+                success: function (result) {
+                    if (result.code === 1) {
                         toMain(result.bean);
-                    } else{
+                    } else {
                         alert(result.message);
                     }
                 },
-                error:function (result) {
+                error: function (result) {
                     alert(result.message)
                 }
             });
         }
-
         function toMain(user) {
-            if(user.role===1){
-                window.location.href="/manager/main";
-            }  else if(user.role===3){
-                window.location.href="/waiter/main";
-            } else if(user.role===4){
-                window.location.href="/chef/main";
+            if (user.role === 1) {
+                window.location.href = "/manager/main";
+            } else if (user.role === 3) {
+                window.location.href = "/waiter/main";
+            } else if (user.role === 4) {
+                window.location.href = "/chef/main";
             } else {
-                window.location.href="/customer/main";
+                window.location.href = "/customer/main";
             }
         }
+        function register() {
+        }
     </script>
-
 </head>
 
 <body style="background-color:#1c77ac; background-image:url(images/light.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
-
-
 <div id="mainBody">
     <div id="cloud1" class="cloud"></div>
     <div id="cloud2" class="cloud"></div>
 </div>
-
 
 <div class="logintop">
     <span>餐饮管理系统</span>
@@ -84,22 +80,16 @@
 </div>
 
 <div class="loginbody">
-
     <span class="systemlogo"></span>
-
     <div class="loginbox">
-        
-            <ul>
-                <li><input id ="userName" name="userName" type="text" class="loginuser" value="张宇"/></li>
-                <li><input id="password" name="password" type="text" class="loginpwd" value="123456" /></li>
-                <li style="align-content: center"><input id="login_link" name="" type="button" class="loginbtn" value="登录"/>
+        <ul>
+            <li><input id="userName" name="userName" type="text" class="loginuser" value="张宇"/></li>
+            <li><input id="password" name="password" type="text" class="loginpwd" value="123456"/></li>
+            <li style="align-content: center"><input id="login_link" name="" type="button" class="loginbtn" value="登录"/>
                 <input id="register_link" name="" type="button" class="loginbtn" value="注册"/></li>
-            </ul>
-
+        </ul>
     </div>
-
 </div>
-
 
 <div class="loginbm">版权所有</div>
 </body>
