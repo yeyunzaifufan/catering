@@ -76,15 +76,15 @@
         <tbody>
 
         <tr th:each="meat: ${meatList}" }>
-            <td><input id="" type="text" readonly="readonly" style="width: 30px" th:value="${food.id}"/></td>
-            <td class="imgtd"><img th:src="${food.foodImagePath}"/></td>
-            <td th:text="${food.foodName}"></td>
+            <td><input id="" type="text" readonly="readonly" style="width: 30px" th:value="${meat.id}"/></td>
+            <td class="imgtd"><img th:src="${meat.foodImagePath}"/></td>
+            <td th:text="${meat.foodName}"></td>
             <td>
                 <input type="radio" name="kouwei">辣</input>&nbsp;&nbsp;
                 <input type="radio" name="kouwei">微辣</input>&nbsp;&nbsp;
                 <input type="radio" name="kouwei" checked="checked">不辣</input>
             </td>
-            <td th:text="${food.foodPrice}"></td>
+            <td th:text="${meat.foodPrice}"></td>
             <td>
                 <input id="less" type="button" class="loginbtn" style="width: 30px" value="-"/>&nbsp;&nbsp;
                 <input id="fenshu" type="text" style="width: 15px" value="0"/>&nbsp;&nbsp;
