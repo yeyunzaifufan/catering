@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.dao.FoodDao">
+    <select id="findFoodList" resultType="com.zy.model.Food">
+        SELECT
+        `id`,
+        `food_type` AS foodType,
+        `food_name` AS foodName,
+        `food_price` AS foodPrice,
+        `chef_id` AS chefId,
+        food_image_path AS foodImagePath
+        FROM
+        food
+        WHERE
+        food_type = #{foodType}
+        ORDER BY id
+    </select>
+</mapper>

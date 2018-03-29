@@ -24,7 +24,9 @@
                     $(this).next('ul').slideDown();
                 }
             });
-        })
+        });
+
+
     </script>
 
 
@@ -40,16 +42,11 @@
             <span><img th:src="@{~/images/leftico01.png}"/></span>点餐
         </div>
         <ul class="menuson">
-            <li class="active"><cite></cite><a th:href="@{~/customer/index}" target="rightFrame">首页模版</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/right}" target="rightFrame">数据列表</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/imgtable}" target="rightFrame">图片数据表</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/form}" target="rightFrame">添加编辑</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/imglist}" target="rightFrame">图片列表</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/imglist1}" target="rightFrame">自定义</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/tools}" target="rightFrame">常用工具</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/filelist}" target="rightFrame">信息管理</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/tab}" target="rightFrame">Tab页</a><i></i></li>
-            <li><cite></cite><a th:href="@{~/customer/error}" target="rightFrame">404页面</a><i></i></li>
+            <li><cite></cite><a th:href="@{~/customer/food/meat}" target="rightFrame">肉类</a><i></i></li>
+            <li><cite></cite><a th:href="@{~/customer/food/vegetables}" target="rightFrame">菜类</a><i></i></li>
+            <li><cite></cite><a th:href="@{~/customer/food/soup}" target="rightFrame">汤类</a><i></i></li>
+            <li><cite></cite><a th:href="@{~/customer/food/staplefood}" target="rightFrame">主食类</a><i></i></li>
+            <li><cite></cite><a th:href="@{~/customer/food/beverage}" target="rightFrame">饮料类</a><i></i></li>
         </ul>
     </dd>
 
