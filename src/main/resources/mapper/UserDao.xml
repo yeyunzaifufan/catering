@@ -8,15 +8,21 @@
          user
          (
          user_name,
-         user_password,
+         password,
          role
          )
          VALUES
          (
          #{userName},
-         #{password}
+         #{password},
+         #{role}
          )
     </insert>
+    <delete id="deleteUser">
+        DELETE FROM
+        user
+        WHERE id = #{userId}
+    </delete>
     <select id="findUserByUserName" resultType="com.zy.model.User">
         SELECT
           user_name AS userName,
@@ -26,5 +32,16 @@
           user
         WHERE
           user_name = #{userName}
+    </select>
+    <select id="findUserByRole" resultType="com.zy.model.User">
+        SELECT
+        id,
+        user_name AS userName,
+        password AS password,
+        role
+        FROM
+        user
+        WHERE
+        role = #{role}
     </select>
 </mapper>

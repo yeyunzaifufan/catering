@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link th:href="@{~/css/style.css}" rel="stylesheet" type="text/css"/>
+    <script language="JavaScript" th:src="@{~/js/jquery.js}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".click").click(function () {
+                $(".tip").fadeIn(200);
+            });
+
+            $(".tiptop a").click(function () {
+                $(".tip").fadeOut(200);
+            });
+
+            $(".sure").click(function () {
+                $(".tip").fadeOut(100);
+            });
+
+            $(".cancel").click(function () {
+                $(".tip").fadeOut(100);
+            });
+
+        });
+
+        function addUser() {
+            $.ajax({
+                type: "POST",
+                url: "/manager/employee/addUser",
+                async: false,
+                data: {
+                    role: 4,
+                    userName: $("#userName").val(),
+                    password: $("#password").val()
+                },
+                dataType: "json",
+                success: function (result) {
+                    alert(result.message);
+                },
+                error: function (result) {
+                    alert(result.message)
+                }
+            });
+        }
+
+        function deleteUser(userId) {
+            $.ajax({
+                type: "POST",
+                url: "/manager/employee/deleteUser",
+                async: false,
+                data: {
+                    id:userId
+                },
+                dataType: "json",
+                success: function (result) {
+                    alert(result.message);
+                },
+                error: function (result) {
+                    alert(result.message)
+                }
+            });
+        }
+    </script>
+</head>
+
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">员工管理</a></li>
+        <li><a href="#">厨师</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+
+    <div class="tools">
+
+        <ul class="toolbar">
+            <li class="click"><span><img th:src="@{~/images/t01.png}"/></span>添加</li>
+        </ul>
+
+
+        <ul class="toolbar1">
+            <li><span><img src="images/t05.png"/></span>设置</li>
+        </ul>
+
+    </div>
+
+
+    <table class="tablelist">
+
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="user: ${userList}" }>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.password}"></td>
+            <td>
+                <button type="button" th:onclick="'javascript:deleteUser('+${user.id}+')'">删除</button>
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="tip">
+
+    <div class="tiptop"><span>新增用户</span><a></a></div>
+
+    <div class="tipinfo">
+
+        <table class="tablelist" style="width: 350px">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>值</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" id="userName" style="background-color: gainsboro"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text" id="password" style="background-color: gainsboro"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tipbtn">
+        <input name="" type="button" class="sure" onclick="addUser()" value="确定"/>&nbsp;
+        <input name="" type="button" class="cancel" value="取消"/>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $('.tablelist tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

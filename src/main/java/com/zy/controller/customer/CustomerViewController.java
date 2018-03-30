@@ -17,31 +17,31 @@ public class CustomerViewController {
     //------------------------------点餐界面------------------------------
     @RequestMapping("/food/meat")
     public String toMeat(Model model){
-        model.addAttribute("meatList", foodService.getFoodList(FoodTypeEnum.MEAT.getType()));
+        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.MEAT.getType()));
         return "/customer/food/meat";
     }
 
     @RequestMapping("/food/vegetables")
     public String toVegetables(Model model){
-        model.addAttribute("vegetablesList", foodService.getFoodList(FoodTypeEnum.VEGETABLES.getType()));
+        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.VEGETABLES.getType()));
         return "/customer/food/vegetables";
     }
 
     @RequestMapping("/food/soup")
     public String toSoup(Model model){
-        model.addAttribute("soupList", foodService.getFoodList(FoodTypeEnum.SOUP.getType()));
+        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.SOUP.getType()));
         return "/customer/food/soup";
     }
 
     @RequestMapping("/food/staplefood")
     public String toStapleFood(Model model){
-        model.addAttribute("staplefoodList", foodService.getFoodList(FoodTypeEnum.STAPLEFOOD.getType()));
+        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.STAPLEFOOD.getType()));
         return "/customer/food/staplefood";
     }
 
     @RequestMapping("/food/beverage")
     public String toBeverage(Model model){
-        model.addAttribute("beverageList", foodService.getFoodList(FoodTypeEnum.BEVERAGE.getType()));
+        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.BEVERAGE.getType()));
         return "/customer/food/beverage";
     }
 }

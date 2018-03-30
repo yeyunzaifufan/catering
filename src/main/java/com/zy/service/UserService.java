@@ -10,6 +10,8 @@ import com.zy.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Liu-Yang on 2018/3/26.
  */
@@ -32,13 +34,29 @@ public class UserService {
         return result;
     }
 
-    public void addUser(User user){
+    public List<User> findUserByRole(Integer role){
+        return userDao.findUserByRole(role);
+    }
+
+    public Result addUser(User user){
         Result result = new Result();
         Integer i = userDao.insertUser(user);
-        if(i == ResultCodeEnum.SUCCESS.getStatus()){
-            result.setCode(ResultCodeEnum.SUCCESS.getStatus());
-        } else {
-            result.setMessage(ResultMsgConstants.LOGIN_WRONG_MSG);
+        if(i==ResultCodeEnum.SUCCESS.getStatus()){
+            result.setMessage("增加成功！");
+        } else{
+            result.setMessage("增加失败！");
         }
+        return result;
+    }
+
+    public Result deleteUser(User user){
+        Result result = new Result();
+        Integer i = userDao.deleteUser(user.getId());
+        if(i==ResultCodeEnum.SUCCESS.getStatus()){
+            result.setMessage("删除成功！");
+        } else{
+            result.setMessage("删除失败！");
+        }
+        return result;
     }
 }
