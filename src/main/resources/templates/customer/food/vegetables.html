@@ -29,22 +29,41 @@
         function subtract(foodId,count) {
             $.ajax({
                 type: "POST",
-                url: "/customer/order/subtract",
+                url: "/customer/order/subtractFood",
                 async: false,
                 data: {
-                    footId: foodId,
+                    foodId: foodId,
                     count: count
                 },
                 dataType: "json",
                 success: function (result) {
-                    if (result.code === 1) {
-                        toMain(result.bean);
-                    } else {
-                        alert(result.message);
+                    if(result.code===1) {
+                        var foodCount = parseInt($("#"+foodId).val());
+                        if(foodCount>0) {
+                            foodCount--;
+                        }
+                        $("#"+foodId).val(foodCount);
                     }
+                }
+            });
+        }
+
+        function addFood(foodId,count) {
+            $.ajax({
+                type: "POST",
+                url: "/customer/order/addFood",
+                async: false,
+                data: {
+                    foodId: foodId,
+                    count: count
                 },
-                error: function (result) {
-                    alert(result.message)
+                dataType: "json",
+                success: function (result) {
+                    if(result.code===1) {
+                        var foodCount = parseInt($("#"+foodId).val());
+                        foodCount++;
+                        $("#"+foodId).val(foodCount);
+                    }
                 }
             });
         }
@@ -64,23 +83,6 @@
 
 <div class="rightinfo">
 
-    <div class="tools">
-
-        <ul class="toolbar">
-            <li class="click"><span><img src="images/t01.png"/></span>添加</li>
-            <li class="click"><span><img src="images/t02.png"/></span>修改</li>
-            <li><span><img src="images/t03.png"/></span>删除</li>
-            <li><span><img src="images/t04.png"/></span>统计</li>
-        </ul>
-
-
-        <ul class="toolbar1">
-            <li><span><img src="images/t05.png"/></span>设置</li>
-        </ul>
-
-    </div>
-
-
     <table class="imgtable">
 
         <thead>
@@ -88,7 +90,6 @@
             <th>序号</th>
             <th width="100px;">菜品</th>
             <th>菜名</th>
-            <th>口味</th>
             <th>单价/元</th>
             <th>份数</th>
         </tr>
@@ -102,54 +103,17 @@
             <td th:text="${food.foodName}"></td>
             <td th:text="${food.foodPrice}"></td>
             <td>
-                <input type="button" class="loginbtn" style="width: 30px" value="-"
-                       th:onclick="'javascript:subtract('+${food.id}+','+${food.count}"/>&nbsp;&nbsp;
-                <span th:text="${food.count}"></span>&nbsp;&nbsp;
-                <input type="button" class="loginbtn" style="width: 30px" value="+"
-                       th:onclick="'javascript:add('+${food.id}+','+${food.count}"/>
+                <input style="background-color: #66c9f3;width: 25px" value="-" type="button"
+                       th:onclick="'javascript:subtract('+${food.id}+','+${food.count}+')'"/>
+                <input th:id="${food.id}" th:value="${food.count}" style="width: 15px" readonly="readonly"/>
+                <input style="background-color: #66c9f3;width: 25px" value="+" type="button"
+                       th:onclick="'javascript:addFood('+${food.id}+','+${food.count}+')'"/>
             </td>
         </tr>
 
         </tbody>
 
     </table>
-
-    <div class="tip">
-        <div class="tiptop"><span>提示信息</span><a></a></div>
-
-        <div class="tipinfo">
-            <span><img src="images/ticon.png"/></span>
-            <div class="tipright">
-                <p>是否确认对信息的修改 ？</p>
-                <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
-            </div>
-        </div>
-
-        <div class="tipbtn">
-            <input name="" type="button" class="sure" value="确定"/>&nbsp;
-            <input name="" type="button" class="cancel" value="取消"/>
-        </div>
-
-    </div>
-
-
-</div>
-
-<div class="tip">
-    <div class="tiptop"><span>提示信息</span><a></a></div>
-
-    <div class="tipinfo">
-        <span><img src="images/ticon.png"/></span>
-        <div class="tipright">
-            <p>是否确认对信息的修改 ？</p>
-            <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
-        </div>
-    </div>
-
-    <div class="tipbtn">
-        <input name="" type="button" class="sure" value="确定"/>&nbsp;
-        <input name="" type="button" class="cancel" value="取消"/>
-    </div>
 
 </div>
 

@@ -61,9 +61,7 @@
                 success: function (result) {
                     if(result.code===1) {
                         var foodCount = parseInt($("#"+foodId).val());
-                        if(foodCount>0) {
-                            foodCount++;
-                        }
+                        foodCount++;
                         $("#"+foodId).val(foodCount);
                     }
                 }
