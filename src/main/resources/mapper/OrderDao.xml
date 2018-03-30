@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.dao.OrderDao">
+    <insert id="insertOrder" parameterType="com.zy.model.Order">
+        INSERT into
+        `order`
+        (
+        user_name,
+        status,
+        create_time,
+        update_time,
+        version
+        )
+        VALUES
+        (
+        #{userName},
+        #{status},
+        now(),
+        now(),
+        version
+        )
+    </insert>
+    <select id="findOrderByUserNameAndStatus" resultType="com.zy.model.Order">
+        SELECT
+        id,
+        status,
+        user_name AS userName,
+        price_total AS priceTotal
+        FROM
+        `order`
+        WHERE
+        user_name = #{userName}
+        AND
+        status = #{status}
+    </select>
+</mapper>

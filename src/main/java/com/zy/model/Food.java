@@ -9,6 +9,7 @@ public class Food {
     private Long chefId;
     private String foodImagePath;
     private String foodId;
+    private Long count;
 
     public Long getId() {
         return id;
@@ -64,5 +65,13 @@ public class Food {
 
     public void setFoodId(String foodId) {
         this.foodId = foodId;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 }

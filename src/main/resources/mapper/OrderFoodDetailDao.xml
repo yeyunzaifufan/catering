@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.dao.OrderFoodDetailDao">
+    <insert id="insertOrderFoodDetail" parameterType="com.zy.model.OrderFoodDetail">
+        INSERT INTO
+        orderFoodDetail
+        (
+          order_id,
+          food_id,
+          `count`,
+          status,
+          create_time,
+          update_time,
+          version
+        )
+        VALUES
+        (
+        #{orderId},
+        #{foodId},
+        #{count},
+        #{status},
+        now(),
+        now(),
+        version
+        )
+    </insert>
+    <select id="findOrderFoodDetailByFoodIdAndOrderId" resultType="com.zy.model.OrderFoodDetail">
+        SELECT
+         order_id AS orderId,
+          food_id AS foodId,
+          `count`
+        FROM
+        orderFoodDetail
+        WHERE
+        order_id = #{orderId}
+        and
+        food_id = #{foodId}
+    </select>
+    <select id="findOrderFoodDetailByOrderId" resultType="com.zy.model.OrderFoodDetail">
+        SELECT
+         order_id AS orderId,
+          food_id AS foodId,
+          `count`
+        FROM
+        orderFoodDetail
+        WHERE
+        order_id = #{orderId}
+    </select>
+</mapper>

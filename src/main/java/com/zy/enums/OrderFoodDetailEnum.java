@@ -1,11 +1,14 @@
 package com.zy.enums;
 
-public enum OrderStatusEnum {
+/**
+ * Created by Liu-Yang on 2018/3/29.
+ */
+public enum OrderFoodDetailEnum {
+
     OPEN(1,"点餐中"),
     MAKING(2,"制作中"),
-    EATING(3,"用餐中"),
-    PAY(4,"完成"),
-    CANCEL(5,"取消");
+    OVER(3,"完成"),
+    CANCEL(4,"取消");
 
     private int type;
     private String value;
@@ -26,7 +29,7 @@ public enum OrderStatusEnum {
         this.value = value;
     }
 
-    OrderStatusEnum(int type, String value) {
+    OrderFoodDetailEnum(int type, String value) {
         this.type = type;
         this.value = value;
     }

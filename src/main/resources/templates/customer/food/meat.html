@@ -9,7 +9,6 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-
             $(".click").click(function () {
                 $(".tip").fadeIn(200);
             });
@@ -25,8 +24,30 @@
             $(".cancel").click(function () {
                 $(".tip").fadeOut(100);
             });
-
         });
+        
+        function subtract(foodId,count) {
+            $.ajax({
+                type: "POST",
+                url: "/customer/order/subtract",
+                async: false,
+                data: {
+                    footId: foodId,
+                    count: count
+                },
+                dataType: "json",
+                success: function (result) {
+                    if (result.code === 1) {
+                        toMain(result.bean);
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error: function (result) {
+                    alert(result.message)
+                }
+            });
+        }
     </script>
 </head>
 
@@ -75,43 +96,23 @@
 
         <tbody>
 
-        <tr th:each="meat: ${meatList}" }>
-            <td><input id="" type="text" readonly="readonly" style="width: 30px" th:value="${meat.id}"/></td>
-            <td class="imgtd"><img th:src="${meat.foodImagePath}"/></td>
-            <td th:text="${meat.foodName}"></td>
+        <tr th:each="food: ${foodList}" }>
+            <td th:text="${food.id}"></td>
+            <td class="imgtd"><img th:src="${food.foodImagePath}"/></td>
+            <td th:text="${food.foodName}"></td>
+            <td th:text="${food.foodPrice}"></td>
             <td>
-                <input type="radio" name="kouwei">辣</input>&nbsp;&nbsp;
-                <input type="radio" name="kouwei">微辣</input>&nbsp;&nbsp;
-                <input type="radio" name="kouwei" checked="checked">不辣</input>
-            </td>
-            <td th:text="${meat.foodPrice}"></td>
-            <td>
-                <input id="less" type="button" class="loginbtn" style="width: 30px" value="-"/>&nbsp;&nbsp;
-                <input id="fenshu" type="text" style="width: 15px" value="0"/>&nbsp;&nbsp;
-                <input id="add" type="button" class="loginbtn" style="width: 30px" value="+"/>
+                <input type="button" class="loginbtn" style="width: 30px" value="-"
+                       th:onclick="'javascript:subtract('+${food.id}+','+${food.count}"/>&nbsp;&nbsp;
+                <span th:text="${food.count}"></span>&nbsp;&nbsp;
+                <input type="button" class="loginbtn" style="width: 30px" value="+"
+                       th:onclick="'javascript:add('+${food.id}+','+${food.count}"/>
             </td>
         </tr>
 
         </tbody>
 
     </table>
-
-
-    <!--<div class="pagin">-->
-    <!--<div class="message">共<i class="blue">1256</i>条记录，当前显示第&nbsp;<i class="blue">2&nbsp;</i>页</div>-->
-    <!--<ul class="paginList">-->
-    <!--<li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>-->
-    <!--<li class="paginItem"><a href="javascript:;">1</a></li>-->
-    <!--<li class="paginItem current"><a href="javascript:;">2</a></li>-->
-    <!--<li class="paginItem"><a href="javascript:;">3</a></li>-->
-    <!--<li class="paginItem"><a href="javascript:;">4</a></li>-->
-    <!--<li class="paginItem"><a href="javascript:;">5</a></li>-->
-    <!--<li class="paginItem more"><a href="javascript:;">...</a></li>-->
-    <!--<li class="paginItem"><a href="javascript:;">10</a></li>-->
-    <!--<li class="paginItem"><a href="javascript:;"><span class="pagenxt"></span></a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
-
 
     <div class="tip">
         <div class="tiptop"><span>提示信息</span><a></a></div>
