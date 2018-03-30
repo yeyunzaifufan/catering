@@ -24,10 +24,18 @@
         version
         )
     </insert>
+    <update id="updateCountById">
+        UPDATE
+        orderFoodDetail
+        SET `count` = #{count}
+        where id = #{foodId}
+    </update>
     <select id="findOrderFoodDetailByFoodIdAndOrderId" resultType="com.zy.model.OrderFoodDetail">
         SELECT
+        id,
          order_id AS orderId,
           food_id AS foodId,
+          status,
           `count`
         FROM
         orderFoodDetail
@@ -38,8 +46,10 @@
     </select>
     <select id="findOrderFoodDetailByOrderId" resultType="com.zy.model.OrderFoodDetail">
         SELECT
+        id,
          order_id AS orderId,
           food_id AS foodId,
+          status,
           `count`
         FROM
         orderFoodDetail

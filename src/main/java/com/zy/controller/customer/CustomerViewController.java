@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerViewController {
@@ -16,32 +18,32 @@ public class CustomerViewController {
 
     //------------------------------点餐界面------------------------------
     @RequestMapping("/food/meat")
-    public String toMeat(Model model){
-        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.MEAT.getType()));
+    public String toMeat(HttpServletRequest request, Model model){
+        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.MEAT.getType()));
         return "/customer/food/meat";
     }
 
     @RequestMapping("/food/vegetables")
-    public String toVegetables(Model model){
-        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.VEGETABLES.getType()));
+    public String toVegetables(HttpServletRequest request,Model model){
+        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.VEGETABLES.getType()));
         return "/customer/food/vegetables";
     }
 
     @RequestMapping("/food/soup")
-    public String toSoup(Model model){
-        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.SOUP.getType()));
+    public String toSoup(HttpServletRequest request,Model model){
+        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.SOUP.getType()));
         return "/customer/food/soup";
     }
 
     @RequestMapping("/food/staplefood")
-    public String toStapleFood(Model model){
-        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.STAPLEFOOD.getType()));
+    public String toStapleFood(HttpServletRequest request,Model model){
+        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.STAPLEFOOD.getType()));
         return "/customer/food/staplefood";
     }
 
     @RequestMapping("/food/beverage")
-    public String toBeverage(Model model){
-        model.addAttribute("foodList", foodService.getFoodList(FoodTypeEnum.BEVERAGE.getType()));
+    public String toBeverage(HttpServletRequest request,Model model){
+        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.BEVERAGE.getType()));
         return "/customer/food/beverage";
     }
 }
