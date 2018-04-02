@@ -1,6 +1,7 @@
 package com.zy.service;
 
 import com.zy.base.Result;
+import com.zy.common.FoodCountConstants;
 import com.zy.dao.OrderDao;
 import com.zy.dao.OrderFoodDetailDao;
 import com.zy.enums.OrderFoodDetailEnum;
@@ -28,11 +29,8 @@ public class OrderService {
      *  存在：查看是否在订单详情中存在该菜品
      *      存在：修改count
      *      不存在：在订单详情中新增该菜品
-     * @param userName
-     * @param foodId
-     * @param count
      */
-    public Result orderDetail(String userName, Long foodId, Long count){
+    public Result orderDetail(String userName, Long foodId, String countSign){
         Result result = new Result();
         try {
             Order order = orderDao.findOrderByUserNameAndStatus(userName, OrderStatusEnum.OPEN.getType());
@@ -40,15 +38,24 @@ public class OrderService {
                 order = new Order();
                 order.setUserName(userName);
                 order.setStatus(OrderStatusEnum.OPEN.getType());
+                order.setPriceTotal(0D);
                 orderDao.insertOrder(order);
 
                 order = orderDao.findOrderByUserNameAndStatus(userName, OrderStatusEnum.OPEN.getType());
-                orderFoodDetailDao.insertOrderFoodDetail(this.buildOrderFoodDetail(order, foodId, count));
+                orderFoodDetailDao.insertOrderFoodDetail(this.buildOrderFoodDetail(order, foodId, countSign));
             } else {
                 OrderFoodDetail orderFoodDetail = orderFoodDetailDao.findOrderFoodDetailByFoodIdAndOrderId(foodId, order.getId());
                 if (null == orderFoodDetail) {
-                    orderFoodDetailDao.insertOrderFoodDetail(this.buildOrderFoodDetail(order, foodId, count));
+                    orderFoodDetailDao.insertOrderFoodDetail(this.buildOrderFoodDetail(order, foodId, countSign));
                 } else {
+                    Long count = orderFoodDetail.getCount();
+                    if(countSign.equals(FoodCountConstants.ADD)){
+                        count = count + 1;
+                    } else{
+                        if(count > 0){
+                            count = count - 1;
+                        }
+                    }
                     orderFoodDetailDao.updateCountById(orderFoodDetail.getId(), count);
                 }
             }
@@ -61,11 +68,15 @@ public class OrderService {
         return result;
     }
 
-    private OrderFoodDetail buildOrderFoodDetail(Order order, Long foodId, Long count ){
+    private OrderFoodDetail buildOrderFoodDetail(Order order, Long foodId, String countSign ){
         OrderFoodDetail orderFoodDetail = new OrderFoodDetail();
         orderFoodDetail.setOrderId(order.getId());
         orderFoodDetail.setFoodId(foodId);
-        orderFoodDetail.setCount(count);
+        if(countSign.equals(FoodCountConstants.ADD)){
+            orderFoodDetail.setCount(1L);
+        } else {
+            orderFoodDetail.setCount(0L);
+        }
         orderFoodDetail.setStatus(OrderFoodDetailEnum.OPEN.getType());
         return orderFoodDetail;
     }

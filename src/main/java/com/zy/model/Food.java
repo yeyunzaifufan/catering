@@ -8,8 +8,9 @@ public class Food {
     private Double foodPrice;
     private Long chefId;
     private String foodImagePath;
-    private String foodId;
+
     private Long count;
+    private Double foodTotalPrice;
 
     public Long getId() {
         return id;
@@ -59,19 +60,19 @@ public class Food {
         this.foodImagePath = foodImagePath;
     }
 
-    public String getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
-    }
-
     public Long getCount() {
         return count;
     }
 
     public void setCount(Long count) {
         this.count = count;
+    }
+
+    public Double getFoodTotalPrice() {
+        return foodTotalPrice;
+    }
+
+    public void setFoodTotalPrice(Double foodTotalPrice) {
+        this.foodTotalPrice = foodTotalPrice;
     }
 }

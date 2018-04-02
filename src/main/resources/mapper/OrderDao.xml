@@ -33,4 +33,21 @@
         AND
         status = #{status}
     </select>
+    <select id="findOrderDetailByUserNameAndStatus" resultType="com.zy.model.Food">
+        SELECT
+        f.`id`,
+        f.`food_type` AS foodType,
+        f.`food_name` AS foodName,
+        f.`food_price` AS foodPrice,
+        f.`chef_id` AS chefId,
+        f.food_image_path AS foodImagePath,
+        ofd.count
+        FROM food f
+        inner join
+        orderFoodDetail ofd on ofd.food_id = f.id
+        inner join
+        `order` o on o.id = ofd.order_id
+        where o.user_name = #{userName}
+        and o.status = #{status}
+    </select>
 </mapper>

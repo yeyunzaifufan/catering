@@ -1,6 +1,7 @@
 package com.zy.controller.customer;
 
 import com.zy.enums.FoodTypeEnum;
+import com.zy.enums.OrderStatusEnum;
 import com.zy.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,4 +52,13 @@ public class CustomerViewController {
                 foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.BEVERAGE.getType()));
         return "/customer/food/beverage";
     }
+
+    //------------------------------提交订单------------------------------
+    @RequestMapping("/submitOrder")
+    public String toSubmitOrder(HttpServletRequest request, Model model){
+        model.addAttribute("orderDetailVo",
+                foodService.getOrderDetailVo(request.getSession().getAttribute("userId").toString(), OrderStatusEnum.OPEN.getType()));
+        return "customer/submitOrder";
+    }
+
 }

@@ -7,6 +7,8 @@ import com.zy.enums.OrderStatusEnum;
 import com.zy.model.Food;
 import com.zy.model.Order;
 import com.zy.model.OrderFoodDetail;
+import com.zy.utils.NumberUtil;
+import com.zy.vo.OrderDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +45,19 @@ public class FoodService {
             }
         }
         return foodList;
+    }
+
+    public OrderDetailVo getOrderDetailVo(String userName, Integer orderStatus){
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+        List<Food> foodList = orderDao.findOrderDetailByUserNameAndStatus(userName, orderStatus);
+        Double totalPrice = 0D;
+        for (Food food : foodList){
+            Double foodTotalPrice = NumberUtil.doubleMultiply(food.getFoodPrice(), food.getCount());
+            food.setFoodTotalPrice(foodTotalPrice);
+            totalPrice = NumberUtil.doubleAdd(totalPrice, foodTotalPrice);
+        }
+        orderDetailVo.setFoodList(foodList);
+        orderDetailVo.setTotalPrice(totalPrice);
+        return orderDetailVo;
     }
 }

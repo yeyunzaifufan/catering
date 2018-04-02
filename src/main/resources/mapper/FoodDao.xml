@@ -12,7 +12,9 @@
         FROM
         food
         WHERE
-        food_type = #{foodType}
+        <if test="foodType!=null and foodType!=''">
+          food_type = #{foodType}
+        </if>
         ORDER BY id
     </select>
     <select id="findFoodTypeByFoodId" resultType="java.lang.Integer">
