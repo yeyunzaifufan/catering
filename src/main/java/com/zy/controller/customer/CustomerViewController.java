@@ -18,32 +18,37 @@ public class CustomerViewController {
 
     //------------------------------点餐界面------------------------------
     @RequestMapping("/food/meat")
-    public String toMeat(HttpServletRequest request, Model model){
-        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.MEAT.getType()));
+    public String toMeat(HttpServletRequest request, Model model) {
+        model.addAttribute("foodList",
+                foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.MEAT.getType()));
         return "/customer/food/meat";
     }
 
     @RequestMapping("/food/vegetables")
-    public String toVegetables(HttpServletRequest request,Model model){
-        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.VEGETABLES.getType()));
+    public String toVegetables(HttpServletRequest request, Model model) {
+        model.addAttribute("foodList",
+                foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.VEGETABLES.getType()));
         return "/customer/food/vegetables";
     }
 
     @RequestMapping("/food/soup")
-    public String toSoup(HttpServletRequest request,Model model){
-        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.SOUP.getType()));
+    public String toSoup(HttpServletRequest request, Model model) {
+        model.addAttribute("foodList",
+                foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.SOUP.getType()));
         return "/customer/food/soup";
     }
 
     @RequestMapping("/food/staplefood")
-    public String toStapleFood(HttpServletRequest request,Model model){
-        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.STAPLEFOOD.getType()));
+    public String toStapleFood(HttpServletRequest request, Model model) {
+        model.addAttribute("foodList",
+                foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.STAPLEFOOD.getType()));
         return "/customer/food/staplefood";
     }
 
     @RequestMapping("/food/beverage")
-    public String toBeverage(HttpServletRequest request,Model model){
-        model.addAttribute("foodList", foodService.getFoodList(request.getSession().getAttribute("userId").toString(),FoodTypeEnum.BEVERAGE.getType()));
+    public String toBeverage(HttpServletRequest request, Model model) {
+        model.addAttribute("foodList",
+                foodService.getFoodList(request.getSession().getAttribute("userId").toString(), FoodTypeEnum.BEVERAGE.getType()));
         return "/customer/food/beverage";
     }
 }
