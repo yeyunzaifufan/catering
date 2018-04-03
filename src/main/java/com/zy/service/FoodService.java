@@ -3,6 +3,7 @@ package com.zy.service;
 import com.zy.dao.FoodDao;
 import com.zy.dao.OrderDao;
 import com.zy.dao.OrderFoodDetailDao;
+import com.zy.enums.OrderFoodDetailEnum;
 import com.zy.enums.OrderStatusEnum;
 import com.zy.model.Food;
 import com.zy.model.Order;
@@ -49,7 +50,7 @@ public class FoodService {
 
     public OrderDetailVo getOrderDetailVo(String userName, Integer orderStatus){
         OrderDetailVo orderDetailVo = new OrderDetailVo();
-        List<Food> foodList = orderDao.findOrderDetailByUserNameAndStatus(userName, orderStatus);
+        List<Food> foodList = orderDao.findOrderDetailByUserNameAndStatus(userName, orderStatus, OrderFoodDetailEnum.OPEN.getType());
         Double totalPrice = 0D;
         for (Food food : foodList){
             Double foodTotalPrice = NumberUtil.doubleMultiply(food.getFoodPrice(), food.getCount());

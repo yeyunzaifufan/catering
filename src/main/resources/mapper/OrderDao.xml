@@ -49,5 +49,6 @@
         `order` o on o.id = ofd.order_id
         where o.user_name = #{userName}
         and o.status = #{status}
+        and ofd.status = #{orderFoodDetailStatus}
     </select>
 </mapper>

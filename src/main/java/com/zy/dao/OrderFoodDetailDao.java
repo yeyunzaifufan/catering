@@ -13,9 +13,9 @@ public interface OrderFoodDetailDao extends BaseDao {
 
     Integer insertOrderFoodDetail(OrderFoodDetail orderFoodDetail);
 
-    OrderFoodDetail findOrderFoodDetailByFoodIdAndOrderId(@Param("foodId") Long foodId, @Param("orderId") Long orderId);
+    OrderFoodDetail findOrderFoodDetailByFoodIdAndOrderId(@Param("foodId") Long foodId, @Param("orderId") Long orderId, @Param("status") Integer status);
 
     List<OrderFoodDetail> findOrderFoodDetailByOrderId(@Param("orderId") Long orderId);
 
-    Integer updateCountById(@Param("foodId") Long foodId, @Param("count") Long count);
+    Integer updateCountById(@Param("foodId") Long foodId, @Param("count") Long count, @Param("status") Integer status);
 }

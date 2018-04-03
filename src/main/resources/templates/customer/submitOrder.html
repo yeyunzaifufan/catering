@@ -26,6 +26,14 @@
                 $(".tip").fadeOut(100);
             });
 
+            $("#clear").click(function () {
+
+            });
+
+            $("#submit").click(function () {
+
+            });
+
         });
 
         function subtract(foodId, count, price) {
@@ -48,6 +56,9 @@
                         }
                         $("#" + foodId).val(foodCount);
                         $("#"+foodId+"price").val(foodCount * parseFloat(price));
+                        if(foodCount == 0){
+                            $("#"+foodId+"tr").remove();
+                        }
                     }
                 }
             });
@@ -105,7 +116,7 @@
 
         <tbody>
 
-        <tr th:each="food: ${orderDetailVo.foodList}" }>
+        <tr th:each="food: ${orderDetailVo.foodList}"  th:id="${food.id}+tr"}>
             <td th:text="${food.id}"></td>
             <td th:text="${food.foodName}"></td>
             <td th:text="${food.foodPrice}"></td>
@@ -121,10 +132,19 @@
             </td>
         </tr>
 
+        <tr></tr>
+
         <tr>
             <td>总价</td>
             <td>
                 <input id="totalPrice" style="width: 30px" th:value="${orderDetailVo.totalPrice}" readonly="readonly"/>
+            </td>
+            <td></td>
+            <td>
+                <input id="clear" type="button" style="width: 30px; background-color: #66c9f3" value="清空"/>
+            </td>
+            <td>
+                <input id="submit" type="button" style="width: 30px; background-color: #66c9f3" value="确定"/>
             </td>
         </tr>
 

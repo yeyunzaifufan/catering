@@ -44,7 +44,8 @@ public class OrderService {
                 order = orderDao.findOrderByUserNameAndStatus(userName, OrderStatusEnum.OPEN.getType());
                 orderFoodDetailDao.insertOrderFoodDetail(this.buildOrderFoodDetail(order, foodId, countSign));
             } else {
-                OrderFoodDetail orderFoodDetail = orderFoodDetailDao.findOrderFoodDetailByFoodIdAndOrderId(foodId, order.getId());
+                OrderFoodDetail orderFoodDetail =
+                        orderFoodDetailDao.findOrderFoodDetailByFoodIdAndOrderId(foodId, order.getId(), OrderFoodDetailEnum.OPEN.getType());
                 if (null == orderFoodDetail) {
                     orderFoodDetailDao.insertOrderFoodDetail(this.buildOrderFoodDetail(order, foodId, countSign));
                 } else {
@@ -56,7 +57,11 @@ public class OrderService {
                             count = count - 1;
                         }
                     }
-                    orderFoodDetailDao.updateCountById(orderFoodDetail.getId(), count);
+                    Integer status = orderFoodDetail.getStatus();
+                    if(count == 0){
+                        status = OrderFoodDetailEnum.CANCEL.getType();
+                    }
+                    orderFoodDetailDao.updateCountById(orderFoodDetail.getId(), count, status);
                 }
             }
         } catch (Exception e){

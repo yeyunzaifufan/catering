@@ -27,7 +27,9 @@
     <update id="updateCountById">
         UPDATE
         orderFoodDetail
-        SET `count` = #{count}
+        SET
+        `count` = #{count},
+        status = #{status}
         where id = #{foodId}
     </update>
     <select id="findOrderFoodDetailByFoodIdAndOrderId" resultType="com.zy.model.OrderFoodDetail">
@@ -43,6 +45,8 @@
         order_id = #{orderId}
         and
         food_id = #{foodId}
+        and
+        status = #{status}
     </select>
     <select id="findOrderFoodDetailByOrderId" resultType="com.zy.model.OrderFoodDetail">
         SELECT
