@@ -20,6 +20,13 @@
         version
         )
     </insert>
+    <update id="cancelOrderByUserName">
+        UPDATE `order`
+        SET status = 5
+        where
+        user_name = #{userName}
+        and status = 1
+    </update>
     <select id="findOrderByUserNameAndStatus" resultType="com.zy.model.Order">
         SELECT
         id,

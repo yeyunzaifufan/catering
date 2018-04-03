@@ -85,4 +85,14 @@ public class OrderService {
         orderFoodDetail.setStatus(OrderFoodDetailEnum.OPEN.getType());
         return orderFoodDetail;
     }
+
+    public Result cancelOrder(String userName){
+        Result result = new Result();
+        result.setCode(ResultCodeEnum.FAILED.getStatus());
+        Order order = orderDao.findOrderByUserNameAndStatus(userName, OrderStatusEnum.OPEN.getType());
+        orderDao.cancelOrderByUserName(userName);
+        orderFoodDetailDao.cancelOrderDetailByUserName(order.getId());
+        result.setCode(ResultCodeEnum.SUCCESS.getStatus());
+        return result;
+    }
 }

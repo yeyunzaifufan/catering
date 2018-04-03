@@ -27,7 +27,7 @@
             });
 
             $("#clear").click(function () {
-
+                clearOrder();
             });
 
             $("#submit").click(function () {
@@ -35,6 +35,21 @@
             });
 
         });
+
+        function clearOrder() {
+            $.ajax({
+                type: "POST",
+                url: "/customer/order/clearOrder",
+                async: false,
+                dataType: "json",
+                success: function (result) {
+                    if (result.code === 1) {
+                        $("#orderBody").remove();
+                        $("#totalPrice").val(0);
+                    }
+                }
+            });
+        }
 
         function subtract(foodId, count, price) {
             $.ajax({
@@ -114,8 +129,7 @@
         </tr>
         </thead>
 
-        <tbody>
-
+        <tbody id="orderBody">
         <tr th:each="food: ${orderDetailVo.foodList}"  th:id="${food.id}+tr"}>
             <td th:text="${food.id}"></td>
             <td th:text="${food.foodName}"></td>
@@ -131,9 +145,9 @@
                 <input th:id="${food.id}+price" th:value="${food.foodTotalPrice}" style="width: 30px" readonly="readonly"/>
             </td>
         </tr>
+        </tbody>
 
-        <tr></tr>
-
+        <tbody>
         <tr>
             <td>总价</td>
             <td>

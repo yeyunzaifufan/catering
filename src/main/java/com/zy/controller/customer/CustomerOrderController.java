@@ -3,6 +3,8 @@ package com.zy.controller.customer;
 import com.alibaba.fastjson.JSON;
 import com.zy.base.Result;
 import com.zy.common.FoodCountConstants;
+import com.zy.enums.OrderFoodDetailEnum;
+import com.zy.enums.OrderStatusEnum;
 import com.zy.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -36,6 +38,13 @@ public class CustomerOrderController {
                            @RequestParam(value = "foodId") Long foodId){
         String userName = request.getSession().getAttribute("userId").toString();
         return JSON.toJSONString(orderService.orderDetail(userName, foodId, FoodCountConstants.SUB));
+    }
+
+    @RequestMapping(value = "/clearOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public String clearOrder(HttpServletRequest request){
+        String userName = request.getSession().getAttribute("userId").toString();
+        return JSON.toJSONString(orderService.cancelOrder(userName));
     }
 
 }

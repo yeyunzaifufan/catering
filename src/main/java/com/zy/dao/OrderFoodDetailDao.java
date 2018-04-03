@@ -18,4 +18,6 @@ public interface OrderFoodDetailDao extends BaseDao {
     List<OrderFoodDetail> findOrderFoodDetailByOrderId(@Param("orderId") Long orderId);
 
     Integer updateCountById(@Param("foodId") Long foodId, @Param("count") Long count, @Param("status") Integer status);
+
+    Integer cancelOrderDetailByUserName(@Param("orderId") Long orderId);
 }
