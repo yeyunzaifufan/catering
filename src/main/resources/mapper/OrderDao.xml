@@ -6,18 +6,12 @@
         `order`
         (
         user_name,
-        status,
-        create_time,
-        update_time,
-        version
+        status
         )
         VALUES
         (
         #{userName},
-        #{status},
-        now(),
-        now(),
-        version
+        #{status}
         )
     </insert>
     <update id="cancelOrderByUserName">
@@ -60,7 +54,7 @@
         ofd.count
         FROM food f
         inner join
-        orderFoodDetail ofd on ofd.food_id = f.id
+        order_food_detail ofd on ofd.food_id = f.id
         inner join
         `order` o on o.id = ofd.order_id
         where o.user_name = #{userName}

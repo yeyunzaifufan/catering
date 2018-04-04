@@ -3,30 +3,24 @@
 <mapper namespace="com.zy.dao.OrderFoodDetailDao">
     <insert id="insertOrderFoodDetail" parameterType="com.zy.model.OrderFoodDetail">
         INSERT INTO
-        orderFoodDetail
+        order_food_detail
         (
           order_id,
           food_id,
           `count`,
-          status,
-          create_time,
-          update_time,
-          version
+          status
         )
         VALUES
         (
         #{orderId},
         #{foodId},
         #{count},
-        #{status},
-        now(),
-        now(),
-        version
+        #{status}
         )
     </insert>
     <update id="updateCountById">
         UPDATE
-        orderFoodDetail
+        order_food_detail
         SET
         `count` = #{count},
         status = #{status}
@@ -34,7 +28,7 @@
     </update>
     <update id="cancelOrderDetailByUserName">
         UPDATE
-        orderFoodDetail
+        order_food_detail
         SET
         status = 4
         where order_id = #{orderId}
@@ -42,7 +36,7 @@
     </update>
     <update id="submitOrderDetailByUserName">
         UPDATE
-        orderFoodDetail
+        order_food_detail
         SET
         status = 2
         where order_id = #{orderId}
@@ -56,7 +50,7 @@
           status,
           `count`
         FROM
-        orderFoodDetail
+        order_food_detail
         WHERE
         order_id = #{orderId}
         and
@@ -72,7 +66,7 @@
           status,
           `count`
         FROM
-        orderFoodDetail
+        order_food_detail
         WHERE
         order_id = #{orderId}
     </select>
