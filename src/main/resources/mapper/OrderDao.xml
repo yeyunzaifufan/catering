@@ -22,7 +22,7 @@
     </insert>
     <update id="cancelOrderByUserName">
         UPDATE `order`
-        SET status = 5
+        SET status = 4
         where
         user_name = #{userName}
         and status = 1

@@ -2,10 +2,9 @@ package com.zy.enums;
 
 public enum OrderStatusEnum {
     OPEN(1,"点餐中"),
-    MAKING(2,"制作中"),
-    EATING(3,"用餐中"),
-    PAY(4,"完成"),
-    CANCEL(5,"取消");
+    EATING(2,"用餐中"),
+    PAY(3,"完成"),
+    CANCEL(4,"取消");
 
     private int type;
     private String value;
