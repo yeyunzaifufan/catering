@@ -31,10 +31,31 @@
             });
 
             $("#submit").click(function () {
-
+                submitOrder();
             });
 
         });
+
+        function submitOrder() {
+            $.ajax({
+                type: "POST",
+                url: "/customer/order/submitOrder",
+                async: false,
+                dataType: "json",
+                data: {
+                    totalPrice : $("#totalPrice").val()
+                },
+                success: function (result) {
+                    if (result.code === 1) {
+                        $("#orderBody").remove();
+                        $("#totalPrice").val(0);
+                        alert("已提交订单");
+                    } else{
+                        alert("提交订单失败");
+                    }
+                }
+            });
+        }
 
         function clearOrder() {
             $.ajax({

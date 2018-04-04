@@ -95,4 +95,14 @@ public class OrderService {
         result.setCode(ResultCodeEnum.SUCCESS.getStatus());
         return result;
     }
+
+    public Result submitOrder(String userName, Double totalPrice){
+        Result result = new Result();
+        result.setCode(ResultCodeEnum.FAILED.getStatus());
+        Order order = orderDao.findOrderByUserNameAndStatus(userName, OrderStatusEnum.OPEN.getType());
+        orderDao.submitOrderByUserName(userName, totalPrice);
+        orderFoodDetailDao.submitOrderDetailByUserName(order.getId());
+        result.setCode(ResultCodeEnum.SUCCESS.getStatus());
+        return result;
+    }
 }

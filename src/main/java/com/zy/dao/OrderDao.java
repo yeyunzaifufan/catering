@@ -19,4 +19,6 @@ public interface OrderDao extends BaseDao {
     List<Food> findOrderDetailByUserNameAndStatus(@Param("userName") String userName, @Param("status") Integer status, @Param("orderFoodDetailStatus") Integer orderFoodDetailStatus);
 
     Integer cancelOrderByUserName(@Param("userName") String userName);
+
+    Integer submitOrderByUserName(@Param("userName") String userName, @Param("totalPrice") Double totalPrice);
 }

@@ -40,6 +40,14 @@
         where order_id = #{orderId}
         and status = 1
     </update>
+    <update id="submitOrderDetailByUserName">
+        UPDATE
+        orderFoodDetail
+        SET
+        status = 2
+        where order_id = #{orderId}
+        and status = 1
+    </update>
     <select id="findOrderFoodDetailByFoodIdAndOrderId" resultType="com.zy.model.OrderFoodDetail">
         SELECT
         id,
