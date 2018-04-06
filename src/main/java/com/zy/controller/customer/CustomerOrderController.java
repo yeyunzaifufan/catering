@@ -40,19 +40,19 @@ public class CustomerOrderController {
         return JSON.toJSONString(orderService.updateOrder(userName, foodId, FoodCountConstants.SUB));
     }
 
-//    @RequestMapping(value = "/clearOrder", method = RequestMethod.POST)
-//    @ResponseBody
-//    public String clearOrder(HttpServletRequest request){
-//        String userName = request.getSession().getAttribute("userId").toString();
-//        return JSON.toJSONString(orderService.cancelOrder(userName));
-//    }
-//
-//    @RequestMapping(value = "/submitOrder", method = RequestMethod.POST)
-//    @ResponseBody
-//    public String submitOrder(HttpServletRequest request,
-//                              @RequestParam(value = "totalPrice") Double totalPrice){
-//        String userName = request.getSession().getAttribute("userId").toString();
-//        return JSON.toJSONString(orderService.submitOrder(userName, totalPrice));
-//    }
+    @RequestMapping(value = "/clearOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public String clearOrder(HttpServletRequest request){
+        String userName = request.getSession().getAttribute("userId").toString();
+        return JSON.toJSONString(orderService.cancelOrder(userName));
+    }
+
+    @RequestMapping(value = "/submitOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public String submitOrder(HttpServletRequest request,
+                              @RequestParam(value = "totalPrice") Double totalPrice){
+        String userName = request.getSession().getAttribute("userId").toString();
+        return JSON.toJSONString(orderService.submitOrder(userName, totalPrice));
+    }
 
 }

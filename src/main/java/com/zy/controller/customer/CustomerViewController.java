@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
@@ -63,15 +65,23 @@ public class CustomerViewController {
     //------------------------------提交订单------------------------------
     @RequestMapping("/submitOrder")
     public String toSubmitOrder(HttpServletRequest request, Model model){
-        OrderDetailVo orderDetailVo = orderService.getOrderDetailListVo(request.getSession().getAttribute("userId").toString(), OrderStatusEnum.OPEN.getType()).get(0);
-        if(orderDetailVo.getFoodVoList().size() > 0){
-            Double totalPrice = 0D;
-            for(FoodVo foodVo : orderDetailVo.getFoodVoList()){
-                totalPrice = NumberUtil.doubleAdd(totalPrice, foodVo.getFoodTotalPrice());
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+        Order order = new Order();
+        order.setPriceTotal(0D);
+        orderDetailVo.setOrder(order);
+        orderDetailVo.setFoodVoList(new ArrayList<>());
+        List<OrderDetailVo> orderDetailVoList = orderService.getOrderDetailListVo(request.getSession().getAttribute("userId").toString(), OrderStatusEnum.OPEN.getType());
+        if(orderDetailVoList.size()>0) {
+            orderDetailVo = orderDetailVoList.get(0);
+            if (orderDetailVo.getFoodVoList().size() > 0) {
+                Double totalPrice = 0D;
+                for (FoodVo foodVo : orderDetailVo.getFoodVoList()) {
+                    totalPrice = NumberUtil.doubleAdd(totalPrice, foodVo.getFoodTotalPrice());
+                }
+                order = orderDetailVo.getOrder();
+                order.setPriceTotal(totalPrice);
+                orderDetailVo.setOrder(order);
             }
-            Order order = orderDetailVo.getOrder();
-            order.setPriceTotal(totalPrice);
-            orderDetailVo.setOrder(order);
         }
         model.addAttribute("orderDetailVo", orderDetailVo);
         return "customer/submitOrder";
