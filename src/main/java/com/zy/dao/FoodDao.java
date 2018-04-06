@@ -10,5 +10,4 @@ public interface FoodDao extends BaseDao {
 
     List<Food> findFoodList(@Param("foodType") Integer foodType);
 
-    Integer findFoodTypeByFoodId(@Param("foodId") Long foodId);
 }

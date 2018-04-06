@@ -17,12 +17,4 @@
         </if>
         ORDER BY id
     </select>
-    <select id="findFoodTypeByFoodId" resultType="java.lang.Integer">
-        SELECT
-        `food_type` AS foodType
-        FROM
-        food
-        WHERE
-        id = #{foodId}
-    </select>
 </mapper>

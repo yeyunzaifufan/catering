@@ -1,7 +1,6 @@
 package com.zy.dao;
 
 import com.zy.base.BaseDao;
-import com.zy.model.Food;
 import com.zy.model.Order;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,8 +14,6 @@ public interface OrderDao extends BaseDao {
     List<Order> findOrderListByUserNameAndStatus(@Param("userName") String userName, @Param("status") Integer status);
 
     Integer insertOrder(Order order);
-
-    List<Food> findOrderDetailByUserNameAndStatus(@Param("userName") String userName, @Param("status") Integer status, @Param("orderFoodDetailStatus") Integer orderFoodDetailStatus);
 
     Integer cancelOrderByUserName(@Param("userName") String userName);
 
