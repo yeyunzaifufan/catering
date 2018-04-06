@@ -9,9 +9,6 @@ public class Food {
     private Long chefId;
     private String foodImagePath;
 
-    private Long count;
-    private Double foodTotalPrice;
-
     public Long getId() {
         return id;
     }
@@ -58,21 +55,5 @@ public class Food {
 
     public void setFoodImagePath(String foodImagePath) {
         this.foodImagePath = foodImagePath;
-    }
-
-    public Long getCount() {
-        return count;
-    }
-
-    public void setCount(Long count) {
-        this.count = count;
-    }
-
-    public Double getFoodTotalPrice() {
-        return foodTotalPrice;
-    }
-
-    public void setFoodTotalPrice(Double foodTotalPrice) {
-        this.foodTotalPrice = foodTotalPrice;
     }
 }

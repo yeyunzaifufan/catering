@@ -69,5 +69,7 @@
         order_food_detail
         WHERE
         order_id = #{orderId}
+        and
+        status != 4
     </select>
 </mapper>

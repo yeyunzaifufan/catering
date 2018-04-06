@@ -9,6 +9,7 @@ public class Order {
     private Integer status;
     private String userName;
     private Double priceTotal;
+    private Long waiterId;
 
     public Long getId() {
         return id;
@@ -40,5 +41,13 @@ public class Order {
 
     public void setPriceTotal(Double priceTotal) {
         this.priceTotal = priceTotal;
+    }
+
+    public Long getWaiterId() {
+        return waiterId;
+    }
+
+    public void setWaiterId(Long waiterId) {
+        this.waiterId = waiterId;
     }
 }

@@ -11,8 +11,8 @@
         food_image_path AS foodImagePath
         FROM
         food
-        WHERE
         <if test="foodType!=null and foodType!=''">
+          WHERE
           food_type = #{foodType}
         </if>
         ORDER BY id

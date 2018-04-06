@@ -1,27 +1,27 @@
 package com.zy.vo;
 
-import com.zy.model.Food;
+import com.zy.model.Order;
 
 import java.util.List;
 
 public class OrderDetailVo {
 
-    private List<Food> foodList;
-    private Double totalPrice;
+    private Order order;
+    private List<FoodVo> foodVoList;
 
-    public List<Food> getFoodList() {
-        return foodList;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setFoodList(List<Food> foodList) {
-        this.foodList = foodList;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
+    public List<FoodVo> getFoodVoList() {
+        return foodVoList;
     }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setFoodVoList(List<FoodVo> foodVoList) {
+        this.foodVoList = foodVoList;
     }
 }

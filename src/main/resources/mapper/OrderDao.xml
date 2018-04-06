@@ -30,7 +30,7 @@
         user_name = #{userName}
         and status = 1
     </update>
-    <select id="findOrderByUserNameAndStatus" resultType="com.zy.model.Order">
+    <select id="findOrderListByUserNameAndStatus" resultType="com.zy.model.Order">
         SELECT
         id,
         status,

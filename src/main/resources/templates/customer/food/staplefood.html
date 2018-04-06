@@ -97,17 +97,17 @@
 
         <tbody>
 
-        <tr th:each="food: ${foodList}" }>
-            <td th:text="${food.id}"></td>
-            <td class="imgtd"><img th:src="${food.foodImagePath}"/></td>
-            <td th:text="${food.foodName}"></td>
-            <td th:text="${food.foodPrice}"></td>
+        <tr th:each="foodVo : ${foodVoList}" }>
+            <td th:text="${foodVo.food.id}"></td>
+            <td class="imgtd"><img th:src="${foodVo.food.foodImagePath}"/></td>
+            <td th:text="${foodVo.food.foodName}"></td>
+            <td th:text="${foodVo.food.foodPrice}"></td>
             <td>
                 <input style="background-color: #66c9f3;width: 25px" value="-" type="button"
-                       th:onclick="'javascript:subtract('+${food.id}+','+${food.count}+')'"/>
-                <input th:id="${food.id}" th:value="${food.count}" style="width: 15px" readonly="readonly"/>
+                       th:onclick="'javascript:subtract('+${foodVo.food.id}+','+${foodVo.count}+')'"/>
+                <input th:id="${foodVo.food.id}" th:value="${foodVo.count}" style="width: 15px" readonly="readonly"/>
                 <input style="background-color: #66c9f3;width: 25px" value="+" type="button"
-                       th:onclick="'javascript:addFood('+${food.id}+','+${food.count}+')'"/>
+                       th:onclick="'javascript:addFood('+${foodVo.food.id}+','+${foodVo.count}+')'"/>
             </td>
         </tr>
 

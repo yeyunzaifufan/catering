@@ -15,6 +15,7 @@ public interface OrderFoodDetailDao extends BaseDao {
 
     OrderFoodDetail findOrderFoodDetailByFoodIdAndOrderId(@Param("foodId") Long foodId, @Param("orderId") Long orderId, @Param("status") Integer status);
 
+    //状态不是取消的
     List<OrderFoodDetail> findOrderFoodDetailByOrderId(@Param("orderId") Long orderId);
 
     Integer updateCountById(@Param("foodId") Long foodId, @Param("count") Long count, @Param("status") Integer status);

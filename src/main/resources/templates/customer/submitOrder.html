@@ -151,19 +151,19 @@
         </thead>
 
         <tbody id="orderBody">
-        <tr th:each="food: ${orderDetailVo.foodList}"  th:id="${food.id}+tr"}>
-            <td th:text="${food.id}"></td>
-            <td th:text="${food.foodName}"></td>
-            <td th:text="${food.foodPrice}"></td>
+        <tr th:each="foodVo : ${orderDetailVo.foodVoList}"  th:id="${foodVo.food.id}+tr"}>
+            <td th:text="${foodVo.food.id}"></td>
+            <td th:text="${foodVo.food.foodName}"></td>
+            <td th:text="${foodVo.food.foodPrice}"></td>
             <td>
                 <input style="background-color: #66c9f3;width: 25px" value="-" type="button"
-                       th:onclick="'javascript:subtract('+${food.id}+','+${food.count}+','+${food.foodPrice}+')'"/>
-                <input th:id="${food.id}" th:value="${food.count}" style="width: 15px" readonly="readonly"/>
+                       th:onclick="'javascript:subtract('+${foodVo.food.id}+','+${foodVo.count}+','+${foodVo.food.foodPrice}+')'"/>
+                <input th:id="${foodVo.food.id}" th:value="${foodVo.count}" style="width: 15px" readonly="readonly"/>
                 <input style="background-color: #66c9f3;width: 25px" value="+" type="button"
-                       th:onclick="'javascript:addFood('+${food.id}+','+${food.count}+','+${food.foodPrice}+')'"/>
+                       th:onclick="'javascript:addFood('+${foodVo.food.id}+','+${foodVo.count}+','+${foodVo.food.foodPrice}+')'"/>
             </td>
             <td>
-                <input th:id="${food.id}+price" th:value="${food.foodTotalPrice}" style="width: 30px" readonly="readonly"/>
+                <input th:id="${foodVo.food.id}+price" th:value="${foodVo.foodTotalPrice}" style="width: 30px" readonly="readonly"/>
             </td>
         </tr>
         </tbody>
@@ -172,7 +172,7 @@
         <tr>
             <td>总价</td>
             <td>
-                <input id="totalPrice" style="width: 30px" th:value="${orderDetailVo.totalPrice}" readonly="readonly"/>
+                <input id="totalPrice" style="width: 30px" th:value="${orderDetailVo.order.priceTotal}" readonly="readonly"/>
             </td>
             <td></td>
             <td>

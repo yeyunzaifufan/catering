@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface OrderDao extends BaseDao {
 
-    Order findOrderByUserNameAndStatus(@Param("userName") String userName, @Param("status") Integer status);
+    List<Order> findOrderListByUserNameAndStatus(@Param("userName") String userName, @Param("status") Integer status);
 
     Integer insertOrder(Order order);
 
