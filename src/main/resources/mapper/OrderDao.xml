@@ -35,7 +35,8 @@
         id,
         status,
         user_name AS userName,
-        price_total AS priceTotal
+        price_total AS priceTotal,
+        waiter_id AS waiterId
         FROM
         `order`
         WHERE

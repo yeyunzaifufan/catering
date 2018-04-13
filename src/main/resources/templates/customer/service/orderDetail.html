@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link th:href="@{~/css/style.css}" rel="stylesheet" type="text/css"/>
+    <script language="JavaScript" th:src="@{~/js/jquery.js}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".click").click(function () {
+                $(".tip").fadeIn(200);
+            });
+
+            $(".tiptop a").click(function () {
+                $(".tip").fadeOut(200);
+            });
+
+            $(".sure").click(function () {
+                $(".tip").fadeOut(100);
+            });
+
+            $(".cancel").click(function () {
+                $(".tip").fadeOut(100);
+            });
+        });
+
+        function subtract(foodId,count) {
+            $.ajax({
+                type: "POST",
+                url: "/customer/order/subtractFood",
+                async: false,
+                data: {
+                    foodId: foodId,
+                    count: count
+                },
+                dataType: "json",
+                success: function (result) {
+                    if(result.code===1) {
+                        var foodCount = parseInt($("#"+foodId).val());
+                        if(foodCount>0) {
+                            foodCount--;
+                        }
+                        $("#"+foodId).val(foodCount);
+                    }
+                }
+            });
+        }
+
+        function addFood(foodId,count) {
+            $.ajax({
+                type: "POST",
+                url: "/customer/order/addFood",
+                async: false,
+                data: {
+                    foodId: foodId,
+                    count: count
+                },
+                dataType: "json",
+                success: function (result) {
+                    if(result.code===1) {
+                        var foodCount = parseInt($("#"+foodId).val());
+                        foodCount++;
+                        $("#"+foodId).val(foodCount);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">当前服务</a></li>
+        <li><a href="#">订单详情</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+
+    <table class="imgtable">
+
+        <thead>
+        <tr>
+            <th>订单序号</th>
+            <th width="100px;">总价</th>
+            <th>订单状态</th>
+            <th>服务员序号</th>
+            <th>菜品序号</th>
+            <th>菜品名称</th>
+            <th>厨师序号</th>
+            <th>数量</th>
+            <th>菜品总价</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <form th:each="orderDetailVo : ${orderDetailVoList}"}>
+            <tr>
+                <td th:text="${orderDetailVo.order.id}"></td>
+                <td th:text="${orderDetailVo.order.priceTotal}"></td>
+                <td th:if="${orderDetailVo.order.status} eq '2'">用餐中</td>
+                <td th:text="${orderDetailVo.order.waiterId}"></td>
+            </tr>
+            <tr th:each="foodVo : ${orderDetailVo.foodVoList}">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td th:text="${foodVo.food.id}"></td>
+                <td th:text="${foodVo.food.foodName}"></td>
+                <td th:text="${foodVo.food.chefId}"></td>
+                <td th:text="${foodVo.count}"></td>
+                <td th:text="${foodVo.foodTotalPrice}"></td>
+            </tr>
+        </form>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</body>
+</html>

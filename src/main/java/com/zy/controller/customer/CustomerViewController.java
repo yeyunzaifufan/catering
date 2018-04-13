@@ -87,4 +87,15 @@ public class CustomerViewController {
         return "customer/submitOrder";
     }
 
+    //------------------------------当前服务界面------------------------------
+    @RequestMapping("/service/orderDetail")
+    public String toOrderDetail(HttpServletRequest request, Model model){
+        List<OrderDetailVo> orderDetailVoList = orderService.getOrderDetailListVo(request.getSession().getAttribute("userId").toString(), OrderStatusEnum.EATING.getType());
+        for(OrderDetailVo orderDetailVo : orderDetailVoList){
+            orderDetailVo.setFoodVoSize((long)orderDetailVo.getFoodVoList().size());
+        }
+        model.addAttribute("orderDetailVoList", orderDetailVoList);
+        return "/customer/service/orderDetail";
+    }
+
 }

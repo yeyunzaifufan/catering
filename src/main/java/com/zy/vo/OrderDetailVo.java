@@ -8,6 +8,7 @@ public class OrderDetailVo {
 
     private Order order;
     private List<FoodVo> foodVoList;
+    private Long foodVoSize;
 
     public Order getOrder() {
         return order;
@@ -23,5 +24,13 @@ public class OrderDetailVo {
 
     public void setFoodVoList(List<FoodVo> foodVoList) {
         this.foodVoList = foodVoList;
+    }
+
+    public Long getFoodVoSize() {
+        return foodVoSize;
+    }
+
+    public void setFoodVoSize(Long foodVoSize) {
+        this.foodVoSize = foodVoSize;
     }
 }
