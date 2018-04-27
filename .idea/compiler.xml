@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="catering" />
+        <module name="springcloud" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="catering" target="1.8" />
+      <module name="springcloud" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

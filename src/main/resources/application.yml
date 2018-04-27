@@ -8,6 +8,8 @@ spring:
     cache: false
   resources:
     static-locations: classpath:/static
+  activemq:
+    broker-url: tcp://localhost:61616
 server:
   port: 8080
 

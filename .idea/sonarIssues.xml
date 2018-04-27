@@ -8,6 +8,41 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch12/discovery/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch12/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch6_5/src/main/java/com/wisely/ch6_5/Ch65Application.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch6_5/src/main/java/com/wisely/ch6_5/HelloService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch9_3_4/src/main/java/com/wisely/ch9_3_4/Ch934Application.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch9_3_4/src/main/java/com/wisely/ch9_3_4/Msg.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/SourceCode/ch9_3_4/src/main/java/com/wisely/ch9_3_4/Receiver.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/Desktop/eureka-server/pom.xml">
           <value>
             <set />
@@ -93,6 +128,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjects/iqj-service-group/caikee_client_core/CKclient/src/main/java/com/caikee/client/service/serviceImpl/WithdrawRefundServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../IdeaProjects/iqj-service-group/caikee_client_core/CKclient/src/main/java/com/caikee/client/service/serviceImpl/WithdrawServiceImpl.java">
           <value>
             <set />
@@ -149,6 +189,146 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../IdeaProjects/untitled/src/Main.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/consumer-movie/src/main/java/com/ly/consumermovie/controller/MovieController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/consumer-movie/src/main/java/com/ly/consumermovie/feign/ProviderUserFeign.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/consumer-movie/src/main/java/com/ly/consumermovie/listener/UserListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/discovery-eureka/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/discovery-eureka/src/main/java/com/ly/discoveryeureka/DiscoveryEurekaApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/discovery-eureka/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/discovery-eureka/src/main/resources/logback.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/provider-user/src/main/java/com/ly/provideruser/controller/UserController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/provider-user/src/main/java/com/ly/provideruser/util/MqMessageUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/src/main/java/com/ly/simpleconsumermovie/SimpleConsumerMovieApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/src/main/java/com/ly/simpleconsumermovie/config/MyBatisConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/src/main/java/com/ly/simpleconsumermovie/config/MyBatisMapperScannerConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/src/main/java/com/ly/simpleconsumermovie/controller/MovieController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/src/main/java/com/ly/simpleconsumermovie/responsemodel/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-consumer-movie/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/SimpleProviderUserApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/base/BaseBean.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/config/MyBatisConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/config/MyBatisMapperScannerConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/controller/UserController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/dao/UserDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/java/com/ly/simpleprovideruser/model/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/resources/logback.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../IdeaProjectsPersonal/changhong-spring-cloud/simple-provider-user/src/main/resources/mapper/UserDao.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/pom.xml">
           <value>
             <set />
           </value>
@@ -269,6 +449,26 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/zy/model/Order.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/zy/mq/Message.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/zy/mq/MessageCreator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/zy/mq/MqListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/zy/mq/SendMessage.java">
           <value>
             <set />
           </value>
@@ -459,6 +659,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/templates/manager/top.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../springcloud/pom.xml">
           <value>
             <set />
           </value>

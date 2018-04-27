@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.zy.base.Result;
 import com.zy.enums.ResultCodeEnum;
 import com.zy.model.User;
+import com.zy.mq.Message;
 import com.zy.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
     @RequestMapping("/")
     public String index(){
         return "login";
@@ -34,6 +39,7 @@ public class LoginController {
         Result result = userService.login(user);
         if(result.getCode() == ResultCodeEnum.SUCCESS.getStatus()){
             logger.info("-----------{}：登录成功---------------",user.getUserName());
+            jmsTemplate.send("user", new Message(user));
             session.setAttribute("userId",user.getUserName());
         }
         return JSON.toJSONString(result);
